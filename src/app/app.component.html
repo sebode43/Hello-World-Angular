@@ -1,7 +1,7 @@
 <div>
   <h1 [hidden] = "isHidden" [style.color]="hColor">{{title}} is my first Angular app.</h1>
   <h2 [style.color]="hColor">My name is {{name}}.</h2>
-  <div>
+  <div *ngIf = "showDiv">
     <input [(ngModel)] = "txtValue" type="text">
     | <label>{{txtValue}}</label>
     | <button (click)= "setTxtValue('WTE!');">WTE!</button>
@@ -10,4 +10,11 @@
   <button (click)="setName();">Change Name</button>
   | <button (click) = "toggleColor()">Toggle Color</button>
   | <button (click) ="flipHidden()">Flip Hidden</button>
+  <div>
+    <ol>
+      <li *ngFor = "let name of names">
+        <span>Name is {{name}}</span>
+      </li>
+    </ol>
+  </div>
 </div>
