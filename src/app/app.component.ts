@@ -6,12 +6,17 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-//inside the () is a singl jSON object with three keys
+//inside the () is a single jSON object with three keys
 export class AppComponent {
   title = 'Angular 9';
   name: string = "No name yet!";
   hColor : string = "red";
   isHidden: boolean = false;
+  txtValue: string = "Initial Value";
+
+  setTxtValue(val: string):void{
+    this.txtValue = "WTE!";
+  }
 
   setName(): void{
     this.name = "Sarah";
@@ -24,5 +29,7 @@ toggleColor(): void{
 flipHidden(): void{
   this.isHidden = !this.isHidden;
 }
+
+
 
 }
