@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { UserService } from './user.service';
+import { User } from './user.class';
 //use Component class out of the angular core library
 
 @Component({
@@ -7,7 +9,23 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 //inside the () is a single jSON object with three keys
-export class AppComponent {
+export class AppComponent implements OnInit {
+  users : User[];
+  
+  ngOnInit() {
+    this.usersvc.list().subscribe(
+      res => {
+        this.users = res;
+        console.log("Users:", res);
+      },
+      err => {
+        console.error("User Service List Failed", err);
+      }
+    );
+  }
+
+  constructor(private usersvc: UserService){}
+
   title = 'Angular 9';
   name: string = "No name yet!";
   hColor : string = "red";
